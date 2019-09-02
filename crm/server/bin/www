@@ -1,0 +1,16 @@
+const App = require("../app.js");
+const config = require("../config/index.js");
+const mongoose = require("mongoose");
+
+// Connecting to MongoDB through Mongoose.
+mongoose.connect(config.mongodb.dsn, { useNewUrlParser: true })
+    .then(() => {
+        console.log("Successfully connected to MongoDB through Mongoose.");
+    })
+    .catch((error) => {
+        console.log("Error when connecting to MongoDB through Mongoose: " + error);
+    });
+
+App().listen(3000, () => {
+    console.log("Server listening on port 3000");
+});
